@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>D3 Test</title></head>
+<body style="background:#111; color:#eee; font-family:sans-serif; padding:40px;">
+<h2>D3 Load Test</h2>
+<div id="status">Loading...</div>
+<svg id="test" width="400" height="100"></svg>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+document.getElementById('status').textContent = typeof d3 !== 'undefined' ? 'D3 loaded: v' + d3.version : 'D3 FAILED TO LOAD';
+if (typeof d3 !== 'undefined') {
+  const svg = d3.select('#test');
+  svg.selectAll('rect').data([30,80,50,120,90]).join('rect')
+    .attr('x', (d,i) => i*70+10).attr('y', d=>100-d).attr('width',50).attr('height',d=>d)
+    .attr('fill','#6366f1');
+}
+</script>
+</body>
+</html>
